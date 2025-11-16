@@ -1,14 +1,23 @@
 <?php
+session_start();
 include "connect.php";
+
+if(!isset($_SESSION['user_email'])){
+    header("location: login.php");
+    exit;
+}
 
 if(isset($_GET['id'])){
     $id = $_GET['id'];
 }else{
-    echo "No user id found!";
+    echo "<script>alert('No user id found!');
+    window.alert='login.php';
+    </script>";
 }
 
 $select = mysqli_query($connect,"SELECT*FROM students WHERE id=$id");
 $rows = mysqli_fetch_assoc($select);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
