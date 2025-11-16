@@ -1,3 +1,6 @@
+![alt text](<Screenshot 2025-11-16 144915.png>)
+![alt text](<Screenshot 2025-11-16 144934.png>)
+
 Q1. Session Management in This Project
 This project uses PHP sessions to manage user authentication
 securely. Sessions allow the application to keep track of logged-in
@@ -5,6 +8,7 @@ users across multiple pages without requiring them to log in again
 every time they navigate.
 Every page that interacts with user login status begins with:
 
+![alt text](<Screenshot 2025-11-16 144850.png>)
 
 1. Starting Sessions:
 this means on every page or file session will start on upside for
@@ -15,6 +19,7 @@ This is required so PHP can:
 • Create a new session when needed
 • Read/write user information stored in $_SESSION
 
+![alt text](<Screenshot 2025-11-16 144858.png>)
 
 2. Session Creation During Login
 • When the user logs in successfully, a new session is created:
