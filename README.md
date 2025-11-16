@@ -111,6 +111,7 @@ When logging in:
 3. Only if both match, the user is authenticated.
 
 This prevents:
+
 ➢ Login without correct credentials
 ➢ Bypassing authentication
 ➢ Direct access to other users' accounts
