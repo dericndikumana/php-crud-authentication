@@ -113,7 +113,11 @@ When logging in:
 This prevents:
 
 ➢ Login without correct credentials
+
 ➢ Bypassing authentication
+
 ➢ Direct access to other users' accounts
+
+
 3. Session-Based Authentication
 4. Input Validation
