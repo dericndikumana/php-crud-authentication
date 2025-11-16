@@ -28,7 +28,6 @@ if (isset($_COOKIE['remember_email'])) {
         <div class="mb-3">
             <label for="email">Email:</label>
 
-            <!-- Auto-fill email from cookie -->
             <input type="email" name="email" class="form-control"
                    value="<?php echo $saved_email; ?>"
                    placeholder="Enter your Email name" required>
