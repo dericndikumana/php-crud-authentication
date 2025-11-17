@@ -52,17 +52,17 @@ include "connect.php";
         $email = $_POST['email'];
         $password = $_POST['password'];
         $confirm  = $_POST['cpassword'];
+        $hashed = password_hash($password,PASSWORD_DEFAULT);
 
         if(strlen($password) < 6){
             echo "<script>alert('Password must be at least 6 characters');</script>";
             exit;
         }
 
-        if($password !== $confirm){
+        if($confirm !== $password){
             echo "<script>alert('Confirm password is not the same as password');</script>";
             exit;
         }
-
         // checking email 
         $check = mysqli_query($connect,"SELECT*FROM students WHERE email='$email'");
         if(mysqli_num_rows($check) > 0){
@@ -70,7 +70,7 @@ include "connect.php";
             exit;
         }
 
-        $insert = mysqli_query($connect,"INSERT INTO students(name,email,password) values('$name','$email','$password')");
+        $insert = mysqli_query($connect,"INSERT INTO students(name,email,password) values('$name','$email','$hashed')");
         if ($insert) {
             $_SESSION['user_email'] = $email;
         echo "<script>

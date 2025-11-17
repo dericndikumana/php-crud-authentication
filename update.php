@@ -64,6 +64,7 @@ $rows = mysqli_fetch_assoc($select);
         $email = $_POST['email'];
         $password = $_POST['password'];
         $cpassword = $_POST['cpassword'];
+        $hashed = password_hash($password,PASSWORD_DEFAULT);
 
         if(strlen($password) < 6){
             echo "<script>alert('Password must be at least 6 characters or above')</script>";
@@ -81,7 +82,7 @@ $rows = mysqli_fetch_assoc($select);
             exit;
         }
 
-        $update = mysqli_query($connect,"UPDATE students SET name='$name',email='$email',password='$password' where id='$id'");
+        $update = mysqli_query($connect,"UPDATE students SET name='$name',email='$email',password='$hashed' where id='$id'");
         if($update){
             echo "<script>alert('Student well updated');
             window.location='index.php';
