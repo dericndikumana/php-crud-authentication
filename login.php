@@ -42,16 +42,22 @@ include "connect.php";
         $email = $_POST['email'];
         $password = $_POST['password'];
 
-        $select = mysqli_query($connect,"SELECT*FROM students WHERE email='$email' AND password='$password'");
-         if (mysqli_num_rows($select) == 1) {
-        $_SESSION['user_email'] = $email;
-        header("Location: index.php");
-        exit;
-    } 
-    else {
-        echo "<script>alert('Incorrect email or password');</script>";
+   $query = mysqli_query($connect, "SELECT * FROM students WHERE email='$email'");
+
+    if(mysqli_num_rows($query) == 1){
+        $user = mysqli_fetch_assoc($query);
+
+        if(password_verify($password, $user['password'])){
+            $_SESSION['user_email'] = $email;
+            header("Location: index.php");
+            exit;
+        } else {
+            echo "<script>alert('Incorrect password');</script>";
+        }
+    } else {
+        echo "<script>alert('Email not found');</script>";
     }
-    }
+}
     ?>
 </body>
 </html>
